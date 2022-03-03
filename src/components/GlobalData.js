@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import NumberFormat from 'react-number-format';
 
 
-export default function SimplePaper() {
+export default function GlobalData() {
 
   const [globalData, setGlobalData] = useState();
   const [dataloading, setDataLoading] = useState(false);
@@ -18,6 +18,7 @@ export default function SimplePaper() {
         const res = await fetch(`https://api.covid19api.com/summary`);
         const data = await res.json();
         setGlobalData(data.Global)
+        // console.log(data.Global)
         setDataLoading(false)
     }
     fetchGlobalData()

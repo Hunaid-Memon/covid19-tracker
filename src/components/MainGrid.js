@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
 import GlobalData from './GlobalData'
+import CountryData from './CountryData'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -25,7 +26,9 @@ export default function MainGrid() {
           </Item>
         </Grid>
         <Grid item xs={8}>
-          <Item>xs</Item>
+          <Item>
+              <CountryData />
+          </Item>
         </Grid>
       </Grid>
     </Box>

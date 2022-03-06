@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import NumberFormat from 'react-number-format';
+import Grid from '@mui/material/Grid';
+
 
 
 export default function CountryData() {
@@ -17,7 +19,7 @@ export default function CountryData() {
         setDataLoading(true)
         const res = await fetch(`https://api.covid19api.com/summary`);
         const data = await res.json();
-        console.log(data.Countries);
+        // console.log(data.Countries);
         setCountryData(data.Countries)
         setDataLoading(false)
         // console.log(countryData[0].TotalConfirmed)
@@ -26,12 +28,19 @@ export default function CountryData() {
   },[])
 
   let countrylist = countryData.map(function (country, key) {
-    return (
-        <option key={key} value={country.Slug} >{country.Country}</option>
-    )
-    console.log(country.Country);
-});
+        return (
+                    console.log(country.Slug)
+                )
+    });
+  
+
+//   let countrylist = countryData.map(function (country, key) {
+//     return (
+//         <option key={key} value={country.Slug} >{country.Country}</option>
+//             )
+// });
  
+
 
   return (
     <Box
@@ -45,20 +54,28 @@ export default function CountryData() {
         },
       }}
     >
-      <Paper elevation={3} sx={{ paddingTop: 4, color: 'green' }} >
+
+      {/* <Paper elevation={3} sx={{ paddingTop: 4, color: 'green', border: '2px solid blue' }} > */}
+      
+      <Grid container spacing={2} >
+      <Grid item xs={12} sx={{border: '2px solid blue', marginBottom: '5px'}} >
+          <input type="text" placeholder="Search by country" />
+      </Grid>
+        <Grid item xs={6} sx={{border: '2px solid blue'}} >
         <Typography variant='h5' gutterBottom component='div'>
         {/* <NumberFormat value={countryData && countryData.TotalConfirmed} displayType={'text'} thousandSeparator={true} prefix={''} /> */}
-        <label for="Countries">Choose a Country:</label>
-        <select name="Countries">
-            {countrylist}    
-         </select>
-        
+            12000
         </Typography>
-        <Typography variant='subtitle2' gutterBottom component='div'>
-          Total Infected
+        </Grid>
+        <Grid item xs={6} sx={{border: '2px solid blue'}} >
+        <Typography variant='h5' gutterBottom component='div'>
+        {/* <NumberFormat value={countryData && countryData.TotalConfirmed} displayType={'text'} thousandSeparator={true} prefix={''} /> */}
+            12000
         </Typography>
-      </Paper>
-
+        </Grid>
+      </Grid>
+        {/* </Paper> */}
+    
       </Box>
   );
 }
